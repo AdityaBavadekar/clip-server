@@ -8,10 +8,8 @@ import pyperclip
 
 app = Flask(__name__)
 
-# Shared list to store copied texts
 copied_texts = []
 
-# HTML Template for the webpage
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +42,6 @@ HTML_TEMPLATE = """
         function copyToClipboard(elementId) {
             const text = document.getElementById(elementId).innerText;
 
-            // Try using the modern Clipboard API
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(text).then(() => {
                 }).catch(err => {
@@ -52,12 +49,10 @@ HTML_TEMPLATE = """
                     fallbackCopyToClipboard(text);
                 });
             } else {
-                // Fallback for older browsers
                 fallbackCopyToClipboard(text);
             }
         }
         
-        // Fallback using execCommand
         function fallbackCopyToClipboard(text) {
             const tempInput = document.createElement("textarea");
             tempInput.value = text;
@@ -90,7 +85,6 @@ def clipboard_monitor():
     global copied_texts
     while True:
         try:
-            # Get current clipboard content
             clipboard_content = pyperclip.paste()
             
             # Check if new content is copied
@@ -102,7 +96,6 @@ def clipboard_monitor():
                 print(f"{recent_text}")
                 print("----"*20)
             
-            # Wait before next check
             time.sleep(0.5)
         except KeyboardInterrupt:
             print("\nClipboard monitor stopped.")
