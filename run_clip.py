@@ -67,7 +67,7 @@ HTML_TEMPLATE = """
         }
         
         // Auto-refresh the page every second to show new copied text
-        setTimeout(() => location.reload(), 4000);
+        setTimeout(() => location.reload(), 3000);
     </script>
 </body>
 </html>
@@ -78,6 +78,12 @@ HTML_TEMPLATE = """
 def index():
     return render_template_string(HTML_TEMPLATE, texts=list(enumerate(copied_texts)))
 
+
+# --------------------------------------------------------------------
+# --------------------------------------------------------------------
+# Click on the text shown on the page to copy it to the clipboard
+# --------------------------------------------------------------------
+# --------------------------------------------------------------------
 
 def clipboard_monitor():
     print("Clipboard monitor started. Copy text to see the response.")
