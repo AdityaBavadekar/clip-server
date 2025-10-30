@@ -1,9 +1,8 @@
-import time
-import pyperclip
-from flask import Flask, render_template_string
 import threading
 import time
+
 import pyperclip
+from flask import Flask, render_template_string
 
 
 app = Flask(__name__)
@@ -36,7 +35,6 @@ HTML_TEMPLATE = """
         </div>
         {% endfor %}
     </ul>
-    <
     <script>
         
         function copyToClipboard(elementId) {
