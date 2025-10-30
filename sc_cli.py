@@ -18,7 +18,7 @@ def is_wayland():
 
 
 def ensure_spectacle_installed():
-    # check is spectacle is installed on Wayland
+    # check if spectacle is installed on Wayland
     if is_wayland():
         if shutil.which("spectacle") is None:
             raise RuntimeError(
@@ -85,7 +85,7 @@ def serve_screenshot(filename):
 
 def screenshot_wayland(filepath):
     """
-    On Wayland use grim to capture full screen
+    On Wayland use spectacle to capture full screen
     """
     cmd = [
         "spectacle",
